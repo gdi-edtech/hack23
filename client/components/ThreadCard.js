@@ -1,16 +1,22 @@
 import React from 'react';
 import ThreadReply from './ThreadReply';
+import "../stylesheets/ThreadCard.scss";
 
 
 function ThreadCard( thread ) {
 
-	const threadReplies = thread.replies.map((reply) => <ThreadReply reply={reply.id}/>)
+	const threadReplies = thread.thread.replies
+	const displayThreads= threadReplies.map((reply) => <ThreadReply reply={reply}/>)
 
 	return (
-		<div>
-			{thread.content}
-			{replies}
-		</div>
+		<>
+			<div className={'card'}>
+				{thread.thread.content}
+			</div>
+			<div>
+				{displayThreads}
+			</div>
+		</>
 	);
 
 };

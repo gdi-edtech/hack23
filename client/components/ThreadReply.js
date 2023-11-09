@@ -1,11 +1,11 @@
 import React from 'react';
-import DiscussionThreads from './DiscussionThreads';
+import "../stylesheets/Reply.scss";
 
 function ThreadCard( reply ) {
 
 	return (
-		<div>
-			{reply.content}
+		<div className="reply">
+			{reply.reply.content}
 		</div>
 	);
 
