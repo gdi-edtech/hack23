@@ -1,5 +1,4 @@
 const path = require('path');
-const dotenv = require('dotenv').config();
 const express = require('express');
 const mongoose = require("mongoose");
 const webpack = require('webpack');
@@ -10,9 +9,36 @@ const compiler = webpack(config);
 // MODELS IMPORT
 const User = require("./models/User.model");
 
-const mongoAtlasUri = "THIS SHOULD BE REPLACED BY THE URI FROM MONGO DB ATLAS"
+const mongoAtlasUri = "HAS TO BE REPLACED BY THE MONGODB ATLAS URI PROVIDED"
 
 const app = express();
+
+// CLOUDINARY
+const uploader = require("./config/cloudinary");
+require('dotenv').config();
+
+app.post(
+  "/knowledge/form",
+  uploader.single("img"),
+  async (req, res, next) => {
+    try {
+      // Check the request body of the front
+      let img;
+      if (req.file) {
+        img = req.file.path;
+        console.log(img);
+      }
+      console.log("Creation ongoing");
+      // Handle other processing or send a response
+      res.status(200).json({ message: "File uploaded successfully" });
+    } catch (error) {
+      // Handle any errors that occurred during file upload
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+);
+
 
 // parse incoming requests with JSON payloads
 app.use(express.json());
@@ -98,4 +124,3 @@ try {
 }
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
-
