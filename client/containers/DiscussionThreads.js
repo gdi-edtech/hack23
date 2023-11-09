@@ -8,7 +8,18 @@ function DiscussionThreads( lessonId ) {
 			id: 123,
 			user: 'Lisa',
 			content: 'Test thread one',
-			replies: []
+			replies: [
+				{
+					id: 246,
+					user: 'Jay',
+					content: 'Test reply one',
+				},
+				{
+					id: 122,
+					user: 'Bey',
+					content: 'Test reply two',
+				}
+			]
 		},
 		{
 			id: 456,
@@ -18,12 +29,12 @@ function DiscussionThreads( lessonId ) {
 				{
 					id: 789,
 					user: 'Jay',
-					content: 'Test reply one',
+					content: 'Test reply three',
 				},
 				{
 					id: 135,
 					user: 'Bey',
-					content: 'Test reply two',
+					content: 'Test reply four',
 				}
 			]
 			
