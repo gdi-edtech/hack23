@@ -6,6 +6,7 @@ import UserProfile from "./containers/UserProfile";
 import EditLessonPage from "./containers/EditLessonPage";
 import DiscussionThreads from "./containers/DiscussionThreads";
 import HomePage from "./containers/HomePage";
+import TeachingContainer from "./containers/TeachingContainer";
 import LessonPost from "./components/LessonPost";
 
 const App = () => {
