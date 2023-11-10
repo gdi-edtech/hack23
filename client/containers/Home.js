@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DiscussionThreads from "./DiscussionThreads";
+// import DiscussionThreads from "./DiscussionThreads";
 
 const Home = () => {
   const [intro, updateIntro] = useState("insert text here");
@@ -21,7 +21,7 @@ const Home = () => {
     <div id="app">
       <p>asfasf</p>
       <p>{intro}</p>
-		<DiscussionThreads />
+		{/* <DiscussionThreads /> */}
     </div>
   );
 };
