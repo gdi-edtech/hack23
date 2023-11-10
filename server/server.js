@@ -9,6 +9,8 @@ const compiler = webpack(config);
 const uploadRoutes = require("./routes/uploadRoutes");
 const videoUploadRoutes = require("./routes/videoUploadRoutes");
 const threadRoutes = require("./routes/threadRoutes");
+const replyRoutes = require("./routes/replyRoutes");
+
 // MODELS IMPORT
 const User = require("./models/User.model");
 
@@ -27,7 +29,8 @@ const PORT = process.env.PORT || 3001;
 
 app.use("/api/uploads",uploadRoutes)
 app.use("/api/video-uploads", videoUploadRoutes);
-app.use("api/threads", threads);
+app.use("api/threads", threadRoutes);
+app.use("api/replys", replyRoutes);
 // parse incoming requests with urlencoded payloads
 app.use(express.urlencoded({ extended: true }));
 
