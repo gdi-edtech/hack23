@@ -27,6 +27,11 @@ const getAllThreads = async (req, res) => {
 				as: 'replies',
 				attributes: [],
 			},
+			{
+				model: User,
+				as: 'user',
+				attributes: {},
+			},
 	],}
 	const threads = await Thread.findAll(finalQuery);
 	res.status(200).json(threads);

@@ -171,10 +171,10 @@ app.get('/hello', (req, res) => {
 // });
 
 
-// app.get("/users", async (req, res) => {
-//   const allUsers = await User.find();
-//   return res.status(200).json(allUsers);
-// });
+app.get("/users", async (req, res) => {
+  const allUsers = await User.find();
+  return res.status(200).json(allUsers);
+});
 
 // app.post("/user", async (req, res) => {
 //   const newUser = new User({ ...req.body });

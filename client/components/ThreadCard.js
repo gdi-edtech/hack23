@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import ThreadReply from './ThreadReply';
 
-function ThreadCard( thread ) {
+function ThreadCard( thread, user ) {
 
 	const [showReplyForm, setShowReplyForm] = useState(false)
 	const [formData, setFormData] = useState({ 
-		thread: "",
+		content: "",
+		user: user,
+		thread: thread.id, 
 	})
 
 	const handleChange = (e) => {
@@ -16,7 +18,7 @@ function ThreadCard( thread ) {
 
 	function handleSubmit(e) {
         e.preventDefault()
-        fetch("http://localhost:8080/threads", {
+        fetch("http://localhost:3000/api/replies", {
             method: "POST",
             headers: {"Content-Type":"application/json"},
             body:JSON.stringify(formData)
@@ -24,9 +26,9 @@ function ThreadCard( thread ) {
         .then(resp => resp.json())
         .then(data => {
             setThreads(current => [data, ...current])
+			setShowReplyForm(false)
             setFormData({
-                name: "",
-                address: ""
+                content: "",
             })
         });
     }
@@ -41,7 +43,7 @@ function ThreadCard( thread ) {
 	return (
 		<>
 			<div className={'card'}>
-				{thread.thread.user}: <br/>
+				{thread.thread.user.name}: <br/>
 				{thread.thread.content}
 				<div>
 					<button className="buttons" onClick={handleReply}>{'Edit'}</button>
@@ -50,14 +52,14 @@ function ThreadCard( thread ) {
 			</div>
 			<div>
 				{showReplyForm ? 
-					<form onSubmit={handleSubmit}>
-					<label>{'Discussion: '}
+					<form onSubmit={handleSubmit} className="card">
+					<label>{'Reply: '}
 						<input 
-							name="thread" 
+							name="content" 
 							type="text" 
-							value={formData.thread} 
+							value={formData.content} 
 							onChange={handleChange} 
-							placeholder="Create thread..." required>
+							placeholder="Reply here..." required>
 						</input>
 					</label>
 					<button className='submit buttons' type="submit">{'Submit'}</button>

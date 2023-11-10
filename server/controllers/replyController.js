@@ -17,7 +17,18 @@ const createReply = async (req, res) => {
 // Get all replies
 const getAllReplys = async (req, res) => {
  try {
-   const replys = await Reply.find();
+	const finalQuery = {
+		where: {
+			teachingtext: req.lessonId
+		},
+		include: [
+			{
+				model: User,
+				as: 'user',
+				attributes: {},
+			},
+	],}
+   const replys = await Reply.findAll(finalQuery);
    res.status(200).json(replys);
  } catch (error) {
    res.status(500).json({ error: error.message });

@@ -2,39 +2,51 @@ import React, {useState, useEffect} from 'react';
 import ThreadCard from '../components/ThreadCard';
 import "../stylesheets/DiscussionThreads.scss";
 
-function DiscussionThreads( lessonId ) {
+function DiscussionThreads( lessonId, user ) {
 
 	const fakeThreads = [
 		{
 			id: 123,
-			user: 'Lisa',
+			user: {
+				name: 'Lisa'
+			},
 			content: 'Test thread one',
 			replies: [
 				{
 					id: 246,
-					user: 'Jay',
+					user: {
+						name: 'Jay'
+					},
 					content: 'Test reply one',
 				},
 				{
 					id: 122,
-					user: 'Bey',
+					user: {
+						name: 'Bey'
+					},
 					content: 'Test reply two',
 				}
 			]
 		},
 		{
 			id: 456,
-			user: 'Mark',
+			user: {
+				name: 'Mark'
+			},
 			content: 'Test thread two',
 			replies: [
 				{
 					id: 789,
-					user: 'Jay',
+					user: {
+						name: 'Jay'
+					},
 					content: 'Test reply three',
 				},
 				{
 					id: 135,
-					user: 'Bey',
+					user: {
+						name: 'Bey'
+					},
 					content: 'Test reply four',
 				}
 			]
@@ -43,7 +55,9 @@ function DiscussionThreads( lessonId ) {
 	]
 	const [threads, setThreads] = useState(fakeThreads);
 	const [formData, setFormData] = useState({ 
-		thread: "",
+		content: "",
+		user: user,
+		teachingtext: lessonId,
 	})
 
 	const handleChange = (e) => {
@@ -54,7 +68,7 @@ function DiscussionThreads( lessonId ) {
 
 	function handleSubmit(e) {
         e.preventDefault()
-        fetch("http://localhost:8080/threads", {
+        fetch("http://localhost:3000/api/threads", {
             method: "POST",
             headers: {"Content-Type":"application/json"},
             body:JSON.stringify(formData)
@@ -63,8 +77,7 @@ function DiscussionThreads( lessonId ) {
         .then(data => {
             setThreads(current => [data, ...current])
             setFormData({
-                name: "",
-                address: ""
+				content: "",
             })
         });
     }
@@ -73,22 +86,23 @@ function DiscussionThreads( lessonId ) {
 	useEffect(() => {
 
 		// Fetch threads
-			// fetch("http://localhost:8080/api/threads/?lessonId=${lessonId}")
+			// fetch("http://localhost:3000/api/threads/?lessonId=${lessonId}")
 			// .then((resp) => resp.json())
 			// .then(setThreads)
 
 	}, [lessonId]);
 
-	const threadCards = fakeThreads.map((thread) => <ThreadCard thread={thread} key={thread.id} />)
+	// const threadCards = threads.map((thread) => <ThreadCard thread={thread} user={user} key={thread.id} />)
+	const threadCards = fakeThreads.map((thread) => <ThreadCard thread={thread} user={user} key={thread.id} />)
 	
 	return (
 		<div className="thread-container">
 			<form onSubmit={handleSubmit}>
             <label>{'Discussion: '}
 				<input 
-					name="thread" 
+					name="content" 
 					type="text" 
-					value={formData.thread} 
+					value={formData.content} 
 					onChange={handleChange} 
 					placeholder="Create thread..." required>
 				</input>

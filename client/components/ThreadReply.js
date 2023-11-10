@@ -8,7 +8,7 @@ function ThreadCard( reply ) {
 
 	return (
 		<div className="reply">
-			{reply.reply.user}: <br/>
+			{reply.reply.user.name}: <br/>
 			{reply.reply.content}
 				<div>
 					<button className="buttons" onClick={handleReply}>{'Edit'}</button>
