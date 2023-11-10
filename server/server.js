@@ -12,6 +12,7 @@ const threadRoutes = require("./routes/threadRoutes");
 const replyRoutes = require("./routes/replyRoutes");
 const teachingTextRoutes = require("./routes/teachingTextRoutes");
 const teachingVideoRoutes = require("./routes/teachingVideoRoutes");
+var cors = require('cors')
 
 // MODELS IMPORT
 const User = require("./models/User.model");
@@ -25,6 +26,8 @@ const app = express();
 
 // parse incoming requests with JSON payloads
 app.use(express.json());
+
+app.use(cors())
 
 // REQUIRED ROUTERS
 
