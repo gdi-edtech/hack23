@@ -4,8 +4,8 @@ const Reply = require("../models/Reply.model.js");
 // Create a new reply
 const createReply = async (req, res) => {
    try {
-	 const { content, userId, teachingtext  } = req.body;
-     const newReply = new Reply({ content, user: userId, teachingtext });
+	 const { content, userId, thread  } = req.body;
+     const newReply = new Reply({ content, user: userId, thread });
      const savedReply = await newReply.save();
      res.status(201).json(savedReply);
    } catch (error) {
@@ -42,10 +42,10 @@ const getReplyById = async (req, res) => {
 // Update a reply by ID
 const updateReplyById = async (req, res) => {
  try {
-   const { content, userId, teachingtext  } = req.body;
+   const { content, userId, thread  } = req.body;
    const updatedReply = await Reply.findByIdAndUpdate(
      req.params.id,
-     { content, userId, teachingtext },
+     { content, userId, thread },
      { new: true }
    );
    if (!updatedReply) {

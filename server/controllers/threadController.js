@@ -4,8 +4,8 @@ const Thread = require("../models/Thread.model.js");
 // Create a new thread
 const createThread = async (req, res) => {
    try {
-	 const { content, userId, thread  } = req.body;
-     const newThread = new Thread({ content, user: userId, thread });
+	 const { content, userId, teachingtext  } = req.body;
+     const newThread = new Thread({ content, user: userId, teachingtext });
      const savedThread = await newThread.save();
      res.status(201).json(savedThread);
    } catch (error) {
@@ -42,10 +42,10 @@ const getThreadById = async (req, res) => {
 // Update a thread by ID
 const updateThreadById = async (req, res) => {
  try {
-   const { content, userId, thread  } = req.body;
+   const { content, userId, teachingtext  } = req.body;
    const updatedThread = await Thread.findByIdAndUpdate(
      req.params.id,
-     { content, userId, thread },
+     { content, userId, teachingtext },
      { new: true }
    );
    if (!updatedThread) {
