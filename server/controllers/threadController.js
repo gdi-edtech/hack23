@@ -2,16 +2,52 @@ const Thread = require("../models/Thread.model.js");
 
 
 // Create a new thread
+// const createThread = async (req, res) => {
+//    try {
+// 	 const { content, userId, teachingtext  } = req.body;
+//      const newThread = new Thread({ content, user: userId, teachingtext });
+//      const savedThread = await newThread.save();
+//      res.status(201).json(savedThread);
+//    } catch (error) {
+//      res.status(500).json({ error: error.message });
+//    }
+//  };
 const createThread = async (req, res) => {
-   try {
-	 const { content, userId, teachingtext  } = req.body;
-     const newThread = new Thread({ content, user: userId, teachingtext });
-     const savedThread = await newThread.save();
-     res.status(201).json(savedThread);
-   } catch (error) {
-     res.status(500).json({ error: error.message });
-   }
- };
+	const { content, userId } = req.body;
+	
+	try {
+		let user;
+	
+		if (userId) {
+		// If user ID is provided in the request, use it
+		user = await User.findById(userId);
+	
+		if (!user) {
+			return res.status(404).json({ message: "User not found" });
+		}
+		} else {
+		// If no user ID is provided, use a default user ID
+		const defaultUserId = "654d297fc93255b6bd60ec00"; // Replace with your default user ID
+		user = await User.findById(defaultUserId);
+	
+		if (!user) {
+			return res.status(404).json({ message: "Default user not found" });
+		}
+		}
+	
+		const newThread = new Thread({
+		content,
+		user: user._id, // Associate the thread with the user
+		});
+	
+		const insertedThread = await newThread.save();
+	
+		return res.status(201).json(insertedThread);
+	} catch (error) {
+		console.error(error);
+		return res.status(500).json({ message: "Internal Server Error" });
+	}
+  };
 
 
 // Get all threads

@@ -56,8 +56,8 @@ function DiscussionThreads( lessonId, user ) {
 	const [threads, setThreads] = useState(fakeThreads);
 	const [formData, setFormData] = useState({ 
 		content: "",
-		user: user,
-		teachingtext: lessonId,
+		userId: "654c51830aef36adde42f0a0",
+		// teachingtext: "654d55290487eb9c970237ae",
 	})
 
 	const handleChange = (e) => {
@@ -68,7 +68,7 @@ function DiscussionThreads( lessonId, user ) {
 
 	function handleSubmit(e) {
         e.preventDefault()
-        fetch("http://localhost:3000/api/threads", {
+        fetch("http://localhost:3000/thread", {
             method: "POST",
             headers: {"Content-Type":"application/json"},
             body:JSON.stringify(formData)
@@ -86,7 +86,7 @@ function DiscussionThreads( lessonId, user ) {
 	useEffect(() => {
 
 		// Fetch threads
-		fetch("http://localhost:3000/api/teaching-texts/")
+		fetch("http://localhost:3000/threads/")
 			.then((resp) => resp.json())
 			.then(setThreads)
 
@@ -96,7 +96,7 @@ function DiscussionThreads( lessonId, user ) {
 
 	}, [lessonId]);
 
-	const threadCards = threads.map((thread) => <div><p>{thread.title}</p></div>)
+	const threadCards = threads.map((thread) => <div><p>{thread.content}</p></div>)
 	// const threadCards = fakeThreads.map((thread) => <ThreadCard thread={thread} user={user} key={thread.id} />)
 	
 	return (
