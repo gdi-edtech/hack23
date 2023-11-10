@@ -86,14 +86,18 @@ function DiscussionThreads( lessonId, user ) {
 	useEffect(() => {
 
 		// Fetch threads
+		fetch("http://localhost:3000/api/teaching-texts/")
+			.then((resp) => resp.json())
+			.then(setThreads)
+
 			// fetch("http://localhost:3000/api/threads/?lessonId=${lessonId}")
 			// .then((resp) => resp.json())
 			// .then(setThreads)
 
 	}, [lessonId]);
 
-	// const threadCards = threads.map((thread) => <ThreadCard thread={thread} user={user} key={thread.id} />)
-	const threadCards = fakeThreads.map((thread) => <ThreadCard thread={thread} user={user} key={thread.id} />)
+	const threadCards = threads.map((thread) => <div><p>{thread.title}</p></div>)
+	// const threadCards = fakeThreads.map((thread) => <ThreadCard thread={thread} user={user} key={thread.id} />)
 	
 	return (
 		<div className="thread-container">
