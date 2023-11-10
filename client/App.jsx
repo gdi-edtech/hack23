@@ -18,7 +18,11 @@ const App = () => {
         <Route path="/threads" element={<DiscussionThreads />} />
       </Routes>
     </BrowserRouter> */}
-    <HomePage></HomePage>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </BrowserRouter>
     </>
   );
 };
