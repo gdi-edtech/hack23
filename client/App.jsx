@@ -4,6 +4,7 @@ import "./stylesheets/App.scss";
 import Home from "./containers/Home";
 import UserProfile from "./containers/UserProfile";
 import EditLessonPage from "./containers/EditLessonPage";
+import DiscussionThreads from "./containers/DiscussionThreads";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/threads" element={<DiscussionThreads />} />
       </Routes>
     </BrowserRouter> */}
     <EditLessonPage></EditLessonPage>

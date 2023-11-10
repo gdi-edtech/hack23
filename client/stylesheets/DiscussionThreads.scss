@@ -1,0 +1,31 @@
+.thread-container {
+	background-color: lightgray;
+	padding: 20px;
+	border: 1px solid black;
+
+}
+
+.card {
+	background: white;
+	border: 1px solid black;
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 20px;
+  }
+
+  .reply {
+	background: white;
+	border: 1px solid black;
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 20px;
+	margin-left: 30px;
+}
+
+.buttons {
+	margin-left: 5px;
+  }
