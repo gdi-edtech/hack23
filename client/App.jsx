@@ -3,17 +3,21 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./stylesheets/App.scss";
 import Home from "./containers/Home";
 import UserProfile from "./containers/UserProfile";
+import EditLessonPage from "./containers/EditLessonPage";
 import DiscussionThreads from "./containers/DiscussionThreads";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <>
+    {/* <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/threads" element={<DiscussionThreads />} />
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter> */}
+    <EditLessonPage></EditLessonPage>
+    </>
   );
 };
 

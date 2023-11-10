@@ -148,32 +148,32 @@ app.get("/threads", async (req, res) => {
 // });
 
 
-// app.post("/teachingtext", async (req, res) => {
-//   const { title, description, img, video, categories } = req.body;
-//   const userId = "654d297fc93255b6bd60ec00"; // Use the actual user ID
+app.post("/teachingtext", async (req, res) => {
+  const { title, description, img, video, categories } = req.body;
+  const userId = "654d297fc93255b6bd60ec00"; // Use the actual user ID
 
-//   try {
-//     const user = await User.findById(userId);
+  try {
+    const user = await User.findById(userId);
 
-//     if (!user) {
-//       return res.status(404).json({ message: "User not found" });
-//     }
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
-//     const newTeachingText = new TeachingText({
-//       title,
-//       description,
-//       categories,
-//       user: userId, // Associate the knowledge with the user
-//     });
+    const newTeachingText = new TeachingText({
+      title,
+      description,
+      categories,
+      user: userId, // Associate the knowledge with the user
+    });
 
-//     const insertedTeachingText = await newTeachingText.save();
+    const insertedTeachingText = await newTeachingText.save();
 
-//     return res.status(201).json(insertedTeachingText);
-//   } catch (error) {
-//     console.error(error);
-//     return res.status(500).json({ message: "Internal Server Error" });
-//   }
-// });
+    return res.status(201).json(insertedTeachingText);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 
 
 app.get("/users", async (req, res) => {

@@ -1,4 +1,4 @@
-const TeachingVideo = require("../models/teachingVideo.model.js");
+const TeachingVideo = require("../models/TeachingVideo.model.js");
 
 // Create a new teaching video 
 const createTeachingVideo = async (req, res) => {
