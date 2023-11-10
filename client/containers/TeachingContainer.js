@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 function TeachingContainer() {
 	const[lessons, setLessons] = useState([]);
 	useEffect(() => {
-
 		// Fetch threads
 		fetch("http://localhost:3000/api/teaching-texts/")
 			.then((resp) =>

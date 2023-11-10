@@ -5,6 +5,8 @@ import Home from "./containers/Home";
 import UserProfile from "./containers/UserProfile";
 import EditLessonPage from "./containers/EditLessonPage";
 import DiscussionThreads from "./containers/DiscussionThreads";
+import HomePage from "./containers/HomePage";
+import LessonPost from "./components/LessonPost";
 
 const App = () => {
   return (
@@ -16,7 +18,7 @@ const App = () => {
         <Route path="/threads" element={<DiscussionThreads />} />
       </Routes>
     </BrowserRouter> */}
-    <EditLessonPage></EditLessonPage>
+    <HomePage></HomePage>
     </>
   );
 };
