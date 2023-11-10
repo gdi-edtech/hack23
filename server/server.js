@@ -40,7 +40,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // serve static files in production mode
 if (process.env.NODE_ENV === 'production') {
-  app.use('/', express.static(path.join(__dirname, './../dist')));
+  app.use('*', express.static(path.join(__dirname, './../dist')));
 }
 
 // serve files on publicPath specified in webpack config
