@@ -10,6 +10,7 @@ const uploadRoutes = require("./routes/uploadRoutes");
 const videoUploadRoutes = require("./routes/videoUploadRoutes");
 const teachingTextRoutes = require("./routes/teachingTextRoutes");
 const teachingVideoRoutes = require("./routes/teachingVideoRoutes");
+var cors = require('cors')
 
 // MODELS IMPORT
 const User = require("./models/User.model");
@@ -24,6 +25,9 @@ const app = express();
 // parse incoming requests with JSON payloads
 app.use(express.json());
 
+app.use(cors())
+
+
 // REQUIRED ROUTERS
 
 // REQUIRED CONTROLLERS (IF NEEDED HERE)
@@ -33,6 +37,7 @@ const PORT = process.env.PORT || 3001;
 app.use("/api/uploads",uploadRoutes)
 app.use("/api/video-uploads", videoUploadRoutes);
 app.use("/api/teaching-texts", teachingTextRoutes);
+app.use("/api/teaching-videos", teachingVideoRoutes);
 app.use("/api/teaching-videos", teachingVideoRoutes);
 
 // parse incoming requests with urlencoded payloads
@@ -66,45 +71,49 @@ app.get('/hello', (req, res) => {
 
 // TO BE DELETED, ROUTES FOR TEST PURPOSE
 
-
-
 // Route to create a new thread
-// app.post("/thread", async (req, res) => {
-//   const { content, userId } = req.body;
+app.post("/thread", async (req, res) => {
+  const { content, userId } = req.body;
 
-//   try {
-//     let user;
+  try {
+    let user;
 
-//     if (userId) {
-//       // If user ID is provided in the request, use it
-//       user = await User.findById(userId);
+    if (userId) {
+      // If user ID is provided in the request, use it
+      user = await User.findById(userId);
 
-//       if (!user) {
-//         return res.status(404).json({ message: "User not found" });
-//       }
-//     } else {
-//       // If no user ID is provided, use a default user ID
-//       const defaultUserId = "654d297fc93255b6bd60ec00"; // Replace with your default user ID
-//       user = await User.findById(defaultUserId);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+    } else {
+      // If no user ID is provided, use a default user ID
+      const defaultUserId = "654d297fc93255b6bd60ec00"; // Replace with your default user ID
+      user = await User.findById(defaultUserId);
 
-//       if (!user) {
-//         return res.status(404).json({ message: "Default user not found" });
-//       }
-//     }
+      if (!user) {
+        return res.status(404).json({ message: "Default user not found" });
+      }
+    }
 
-//     const newThread = new Thread({
-//       content,
-//       user: user._id, // Associate the thread with the user
-//     });
+    const newThread = new Thread({
+      content,
+      user: user._id, // Associate the thread with the user
+    });
 
-//     const insertedThread = await newThread.save();
+    const insertedThread = await newThread.save();
 
-//     return res.status(201).json(insertedThread);
-//   } catch (error) {
-//     console.error(error);
-//     return res.status(500).json({ message: "Internal Server Error" });
-//   }
-// });
+    return res.status(201).json(insertedThread);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+app.get("/threads", async (req, res) => {
+  const allThreads = await Thread.find();
+  return res.status(200).json(allThreads);
+});
+
 
 
 // app.post("/reply", async (req, res) => {
@@ -167,10 +176,10 @@ app.get('/hello', (req, res) => {
 // });
 
 
-// app.get("/users", async (req, res) => {
-//   const allUsers = await User.find();
-//   return res.status(200).json(allUsers);
-// });
+app.get("/users", async (req, res) => {
+  const allUsers = await User.find();
+  return res.status(200).json(allUsers);
+});
 
 // app.post("/user", async (req, res) => {
 //   const newUser = new User({ ...req.body });
