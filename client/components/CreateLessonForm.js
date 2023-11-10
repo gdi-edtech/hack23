@@ -9,6 +9,22 @@ function CreateLessonForm() {
     const handleSave = (evt) => {
         console.log("handleSave");
         // Send API post
+        function handleSubmit(e) {
+            e.preventDefault()
+            fetch("http://localhost:3000/api/replies", {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body:JSON.stringify(formData)
+            })
+            .then(resp => resp.json())
+            .then(data => {
+                setThreads(current => [data, ...current])
+                setShowReplyForm(false)
+                setFormData({
+                    content: "",
+                })
+            });
+        }
     }
 useEffect(() => {
   if (!editorInitialized.current) {
