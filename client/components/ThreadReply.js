@@ -1,5 +1,4 @@
 import React from 'react';
-import "../stylesheets/Reply.scss";
 
 function ThreadCard( reply ) {
 
@@ -11,7 +10,10 @@ function ThreadCard( reply ) {
 		<div className="reply">
 			{reply.reply.user}: <br/>
 			{reply.reply.content}
-			<button onClick={handleReply}>{'Reply'}</button>
+				<div>
+					<button className="buttons" onClick={handleReply}>{'Edit'}</button>
+					<button className="buttons" onClick={handleReply}>{'Reply'}</button>
+				</div>
 		</div>
 	);
 

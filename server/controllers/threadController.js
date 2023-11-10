@@ -17,8 +17,19 @@ const createThread = async (req, res) => {
 // Get all threads
 const getAllThreads = async (req, res) => {
  try {
-   const threads = await Thread.find();
-   res.status(200).json(threads);
+	const finalQuery = {
+		where: {
+			teachingtext: req.lessonId
+		},
+		include: [
+			{
+				model: Reply,
+				as: 'replies',
+				attributes: [],
+			},
+	],}
+	const threads = await Thread.findAll(finalQuery);
+	res.status(200).json(threads);
  } catch (error) {
    res.status(500).json({ error: error.message });
  }
