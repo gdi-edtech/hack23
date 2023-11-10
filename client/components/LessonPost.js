@@ -13,12 +13,12 @@ function LessonPost({title, desc, id}) {
         <>
         <Card sx={{ maxWidth: 345 }} className="lessonCard">
             <CardActionArea onClick={handleClickLesson}>
-                <CardMedia
+                {/* <CardMedia
                     component="img"
                     alt="piano"
                     height="140"
                     image="https://upload.wikimedia.org/wikipedia/commons/5/50/Piano.svg"
-                />
+                /> */}
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {title}

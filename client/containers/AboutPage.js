@@ -1,8 +1,12 @@
+import Navbar from "../components/Navbar";
+
 import React from 'react';
 
 function AboutPage() {
 
 	return (
+		<>
+
 		<div>
 			<h1>{'Sodoto'}</h1>
 			<p>
@@ -36,6 +40,7 @@ function AboutPage() {
 
 			</p>
 		</div>
+		</>
 	);
 
 };

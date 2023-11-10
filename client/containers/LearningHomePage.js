@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import LessonPost from '../components/LessonPost';
 import { Container, Grid } from '@mui/material';
 
-
 function HomePage() {
 	const[lessons, setLessons] = useState([]); 
 
@@ -18,6 +17,7 @@ function HomePage() {
 
 	}, []);
   return (
+    <>
     <div>
       <h1>Available Lessons</h1>
       <Grid rowSpacing={4} columnSpacing={3}
@@ -35,6 +35,7 @@ function HomePage() {
         })}
       </Grid>
     </div>
+    </>
   );
 }
 

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import Avatar from "@mui/material/Avatar";
+import TextField from "@mui/material/TextField";
 
 import StandardHeader from "../components/common/StandardHeader";
 import UserAvatar from "../components/common/UserAvatar";
@@ -20,52 +23,59 @@ const UserProfile = () => {
     }));
   };
 
-  const updateFormData = (field, value) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [field]: value,
-    }));
-  };
-
+ 
   return (
     <Paper
       elevation={3}
-      className="mt-6 bg-white min-h-[80vh] rounded-md shadow-md p-4"
+      style={{ padding: 16, marginTop: 24, backgroundColor: "white" }}
     >
       <StandardHeader label={"Profile"} />
       <Grid
         container
         spacing={3}
-        className="border p-4 mt-4 py-8 rounded-md items-center justify-center"
+        direction={"column"}
+        alignItems={"center"}
+        justifyContent={"center"}
+        style={{
+          border: "1px solid #ccc",
+          padding: 16,
+          marginTop: 16,
+          borderRadius: 8,
+        }}
       >
         <Grid item xs={12} md={3}>
           <UserAvatar name={"user"} />
         </Grid>
-        <Grid item xs={12} md={9}>
-          <Grid container spacing={3} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <ProfileInput
+        <Grid
+          direction={"column"}
+          alignItems={"center"}
+          justifyContent={"center"}
+          spacing={20}
+          item
+          xs={12}
+          md={9}
+        >
+          
+            <Grid item xs={12} md={6} marginVertical={20}>
+              <TextField
                 label="Username"
                 name="userName"
                 type="text"
-                field={"userName"}
-                username={formData.userName}
-                updateFormData={updateFormData}
+                fullWidth
+                value={formData.userName}
                 onChange={handleChange}
-                formData={formData}
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <ProfileInput
-                formData={formData}
-                updateFormData={updateFormData}
+              <TextField
                 label="Email"
-                field={"email"}
                 name="email"
                 type="text"
+                fullWidth
+                value={formData.email}
                 onChange={handleChange}
               />
-            </Grid>
+            
           </Grid>
         </Grid>
       </Grid>
