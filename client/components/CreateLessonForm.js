@@ -6,11 +6,14 @@ function CreateLessonForm() {
     const [value, setValue] = useState(null);
     const editorInitialized = useRef(false)
     let editorDataFake = "<h2>How To Play Piano</h2><h3>Step 1</h3><p>Get a Piano.</p><h3>Step 2</h3><p>Hit the keys.</p";
-
+    const handleSave = (evt) => {
+        console.log("handleSave");
+        // Send API post
+    }
 useEffect(() => {
   if (!editorInitialized.current) {
     editorInitialized.current = true;
-    addEditorToDOM();
+    // addEditorToDOM();
     function addEditorToDOM(){
         ClassicEditor.create(document.querySelector('#ckeditorroot'), {
              		initialData: editorDataFake? editorDataFake: '<p>Create your text lesson here.</p>'
@@ -36,7 +39,7 @@ useEffect(() => {
             <div id='ckeditorroot'>
                 <p>CKEDITOR div will hide #ckeditorroot</p>
             </div>
-            {/* <CKEditor
+            <CKEditor
                     editor={ ClassicEditor }
                     data="<p>Hello from CKEditor&nbsp;5!</p>"
                     onReady={ editor => {
@@ -53,7 +56,8 @@ useEffect(() => {
                     onFocus={ ( event, editor ) => {
                         console.log( 'Focus.', editor );
                     } }
-                /> */}
+                />
+                <button className='buttons' onClick={handleSave}>Save Lesson</button>
         </div>
   )
 }
