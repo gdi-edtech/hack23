@@ -6,13 +6,14 @@ function LessonPost({title, desc, id}) {
 
     // const[lesson, setLesson] 
 
-    const handleClickLesson = (evt) => {
-        console.log('go to lesson: '+ id);
-    }
+    // const handleClickLesson = (evt) => {
+    //     console.log('go to lesson: '+ id);
+    // }
     return(
         <>
         <Card sx={{ maxWidth: 345 }} className="lessonCard">
-            <CardActionArea onClick={handleClickLesson}>
+            {/* <CardActionArea onClick={handleClickLesson}> */}
+            <CardActionArea>
                 {/* <CardMedia
                     component="img"
                     alt="piano"
