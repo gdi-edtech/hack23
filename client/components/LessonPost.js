@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 import CreateLessonForm from './CreateLessonForm';
-
+import { Link } from 'react-router-dom';
 function LessonPost({title, desc, id}) {
 
     // const[lesson, setLesson] 
@@ -21,7 +21,7 @@ function LessonPost({title, desc, id}) {
                 /> */}
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {title}
+                        <Link to={`/lesson/${id}`}>{title}</Link>
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                        {desc}
