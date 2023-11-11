@@ -29,6 +29,7 @@ const App = () => {
         <Route path="/learn" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/singlelesson" element={<OneTeachingText />} />
+        <Route path="/learn/:id" element={<TeachingContainer />} />
       </Routes>
 
       <Footer></Footer>

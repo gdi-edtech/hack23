@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import CreateLessonForm from "./CreateLessonForm";
+import { Link } from 'react-router-dom';
 
 function VideoPost({ caption,video,id }) {
   // const[lesson, setLesson]
@@ -34,7 +35,7 @@ function VideoPost({ caption,video,id }) {
           </CardMedia>
           <CardContent>
             <Typography variant="body2" color="text.secondary">
-              {caption}
+            <Link to={`/learn/${id}`}>{caption}</Link>
             </Typography>
           </CardContent>
         </CardActionArea>
