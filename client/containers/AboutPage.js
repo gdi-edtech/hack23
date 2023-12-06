@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import React from 'react';
 import { Link, Outlet } from "react-router-dom";
 
-function About() {
+function AboutPage() {
 
 	return (
 		<>
@@ -70,7 +70,7 @@ function About() {
 					</li>
 				</ul>
         <p>
-			<Link to="/create-video-lesson">
+			<Link to="/teach">
 			<button className="button">Start teaching</button>
 			</Link>
 		
@@ -136,4 +136,4 @@ function About() {
 
 };
 
-export default About;
+export default AboutPage;

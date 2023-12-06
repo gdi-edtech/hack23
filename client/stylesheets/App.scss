@@ -23,7 +23,7 @@ html {
   margin-right: 5vw;
   margin-bottom: 10vw;
 }
-.all-lessons {
+.learningPage {
   margin-left: 5vw;
   margin-right: 5vw;
   margin-bottom: 10vw;
@@ -80,22 +80,6 @@ html {
 
 .button:hover {
   background-color: #555;
-}
-
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  font-family: "Montserrat";
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: grey;
-  font-weight: 500;
-  font-size: 0.9rem;
-  line-height: 32px;
 }
 
 @media screen and (max-width: 650px) {

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import VideoTeachingDisplay from '../components/VideoTeachingDisplay';
 import DiscussionThreads from './DiscussionThreads';
-import "../stylesheets/Lesson.scss";
+import "../stylesheets/TeachingContainer.scss";
 
-function Lesson() {
+function TeachingContainer() {
 
 	const { id } = useParams();
 	const[lesson, setLesson] = useState([]);
@@ -38,4 +38,4 @@ function Lesson() {
 
 };
 
-export default Lesson;
+export default TeachingContainer;

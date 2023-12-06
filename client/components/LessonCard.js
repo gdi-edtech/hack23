@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 
-function LessonText({title, desc, id}) {
+function LessonCard({title, desc, id}) {
 
     // const[lesson, setLesson] 
 
@@ -10,7 +10,7 @@ function LessonText({title, desc, id}) {
     }
     return(
         <>
-        <Card sx={{ maxWidth: 345 }} className="lessonText">
+        <Card sx={{ maxWidth: 345 }} className="lessonCard">
             <CardActionArea onClick={handleClickLesson}>
                 {/* <CardMedia
                     component="img"
@@ -32,4 +32,4 @@ function LessonText({title, desc, id}) {
     )
 }
 
-export default LessonText
+export default LessonCard
