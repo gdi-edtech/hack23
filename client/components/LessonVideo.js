@@ -9,7 +9,7 @@ import {
 import CreateLessonForm from "./CreateLessonForm";
 import { Link } from 'react-router-dom';
 
-function VideoPost({ caption,video,id }) {
+function LessonVideo({ caption,video,id }) {
   // const[lesson, setLesson]
 
   const handleClickLesson = (evt) => {
@@ -17,7 +17,7 @@ function VideoPost({ caption,video,id }) {
   };
   return (
     <>
-      <Card sx={{ maxWidth: 345 }} className="lessonCard">
+      <Card sx={{ maxWidth: 345 }} className="LessonText">
         <CardActionArea onClick={handleClickLesson}>
           <CardMedia
             component="div" // Use a div to create a custom container
@@ -45,4 +45,4 @@ function VideoPost({ caption,video,id }) {
   );
 }
 
-export default VideoPost;
+export default LessonVideo;

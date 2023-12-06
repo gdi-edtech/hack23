@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import StandardHeader from "../components/common/StandardHeader";
 import {
   Button,
   CircularProgress,
@@ -63,12 +62,9 @@ function UploadContent() {
       }}
       className="videouploader"
     >
-      <StandardHeader
-        label="Upload a Video with Caption"
-        style={{ color: "white", fontSize: "24px", fontWeight: "bold" }}
-      />
-
-      <form
+		<h1>Upload a Video with Caption</h1>
+      
+	  <form
         onSubmit={handleSubmit}
         style={{ width: "100%", maxWidth: "500px" }}
       >

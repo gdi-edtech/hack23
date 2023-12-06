@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-import DiscussionThreads from "./DiscussionThreads";
-import HomePage from "./LearningHomePage";
-import Navbar from "../components/Navbar";
+
 
 const Home = () => {
   const [intro, updateIntro] = useState("insert text here");
@@ -58,7 +55,7 @@ const Home = () => {
               <img src={imageUrlDo} alt="learn logo" style={{ maxWidth: "100%", margin: "10px 0" }} />
             </Button>
           </Link>
-          <Link to="/teach">
+          <Link to="/create-video-lesson">
             <Button variant="primary" style={buttonTeachStyle}>
               <img src={imageUrlTeach} alt="teach logo" style={{ maxWidth: "100%", margin: "10px 0" }} />
             </Button>
