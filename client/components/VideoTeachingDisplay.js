@@ -15,7 +15,7 @@ function VideoTeachingDisplay({ caption,video,id }) {
 
   return (
     <>
-      <Card sx={{ maxWidth: 1000 }} className="LessonText">
+      <Card sx={{ maxWidth: 1000 }} className="lessonCard">
           <CardMedia
             component="div" // Use a div to create a custom container
             alt="piano"

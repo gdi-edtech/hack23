@@ -5,8 +5,9 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import TextField from "@mui/material/TextField";
 
-import UserAvatar from "../components/UserAvatar";
-import ProfileInput from "../components/ProfileInput";
+import StandardHeader from "../components/common/StandardHeader";
+import UserAvatar from "../components/common/UserAvatar";
+import ProfileInput from "../components/common/ProfileInput";
 
 const UserProfile = () => {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ const UserProfile = () => {
       elevation={3}
       style={{ padding: 16, marginTop: 24, backgroundColor: "white" }}
     >
-      <h1>Profile</h1>
+      <StandardHeader label={"Profile"} />
       <Grid
         container
         spacing={3}
